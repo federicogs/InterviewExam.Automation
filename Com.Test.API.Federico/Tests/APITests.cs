@@ -24,7 +24,7 @@ namespace Com.Test.API.Federico
         public void Health_Check()
         {
 
-            //// Act
+            // Act
             bool bHealthCheckResult = apiHelper.HealthCheck();
 
             // Assert
@@ -34,7 +34,7 @@ namespace Com.Test.API.Federico
         [Test]
         public void Credential_Check()
         {
-            //// Peepare + Act
+            // Peepare + Act
             String strToken = apiHelper.GetAuthToken();
 
             // Assert
@@ -60,14 +60,11 @@ namespace Com.Test.API.Federico
             };
 
             // Act
-
             BookingResponse res = apiHelper.Create_Booking(oNewBooking);
-
             Assert.NotZero(res.BookingId);
 
-        // Assert
-
-        Assert.Pass();
+            // Assert
+            Assert.Pass();
         }
 
         [Test]
@@ -88,7 +85,7 @@ namespace Com.Test.API.Federico
                 AdditionalNeeds = "Smoking"
             };
 
-            Int32 bookingId = 11;
+            Int32 bookingId = 12;
 
             // Act
 
@@ -100,7 +97,14 @@ namespace Com.Test.API.Federico
         [Test]
         public void Delete_Booking()
         {
-            Assert.Pass();
+            // Arrange
+            Int32 bookingId = 11;
+
+            // Act
+            Boolean result = apiHelper.RemoveBookingById(bookingId);
+
+            // Assert
+            Assert.True(result);
         }
         
         #endregion
