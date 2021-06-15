@@ -66,7 +66,7 @@ Potental Enhacements to Framework:
 - Implement template method
 - Implement Intefaces / contracts for CRUD operations
 - Tests can be bundled to address edge case scenarios
-- 
+
 
 
 
