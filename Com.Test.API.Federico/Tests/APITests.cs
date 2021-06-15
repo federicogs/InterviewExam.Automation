@@ -88,7 +88,7 @@ namespace Com.Test.API.Federico
                 AdditionalNeeds = "Smoking"
             };
 
-            Int32 bookingId = 13;
+            Int32 bookingId = 11;
 
             // Act
 
@@ -102,24 +102,7 @@ namespace Com.Test.API.Federico
         {
             Assert.Pass();
         }
-
-        [Test]
-        public void Get_Bookings()
-        {
-            // apiHelper.get
-
-            //// Arrange
-            //var client = new RestClient(_baseUrl);
-            //var request = new RestRequest("booking", Method.GET);
-
-            //// Act
-            //IRestResponse response = client.Execute(request);
-
-            //// response.Content.dese
-
-            //// Assert
-            //Assert.IsTrue(response.IsSuccessful);
-        }
+        
         #endregion
     }
 }

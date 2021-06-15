@@ -90,12 +90,14 @@ namespace Com.Test.API.Federico.Helpers
         {
             var request = BookingByIdRequest(bookingId, Method.GET);
 
-            BookingResponse result = null;
+            BookingResponse result = new BookingResponse();
 
             try
             {
                 var response_serialized = _client.Execute<BookingResponse>(request);
-                result = JsonSerializer.Deserialize<BookingResponse>(response_serialized.Content);
+
+                result.BookingId = bookingId;
+                result.Booking = JsonSerializer.Deserialize<BookingContract>(response_serialized.Content);
 
             }
             catch (Exception e)
@@ -142,18 +144,16 @@ namespace Com.Test.API.Federico.Helpers
             request.AddUrlSegment("bookingId", bookingId);
             AddHeaders(ref request);
             AddAuthorizationHeader(ref request);
-
             request.AddParameter("application/json", jsonRequest, ParameterType.RequestBody);
 
             // call API            
             var postResponse = _client.Execute<BookingResponse>(request);
 
             // parse result
-            var result = JsonSerializer.Deserialize<BookingResponse>(postResponse.Content);
+            BookingContract result = JsonSerializer.Deserialize<BookingContract>(postResponse.Content);          
+            
 
-            BookingResponse response = GetBookingById(result.BookingId);
-
-            return (response.BookingId != 0);
+            return (!String.IsNullOrEmpty(result.FirstName) && postResponse.IsSuccessful);
         }
 
         public bool GetAllBookings()
