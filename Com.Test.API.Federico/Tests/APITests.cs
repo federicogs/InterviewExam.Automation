@@ -63,6 +63,8 @@ namespace Com.Test.API.Federico
 
             BookingResponse res = apiHelper.Create_Booking(oNewBooking);
 
+            Assert.NotZero(res.BookingId);
+
         // Assert
 
         Assert.Pass();
@@ -71,7 +73,28 @@ namespace Com.Test.API.Federico
         [Test]
         public void Update_Booking()
         {
-            Assert.Pass();
+            // Arrange
+            BookingContract oUpdatedBooking = new BookingContract()
+            {
+                FirstName = "Bill2",
+                LastName = "Gates2",
+                TotalPrice = 2252,
+                DepositPaid = false,
+                BookinDates = new BookingDates()
+                {
+                    CheckIn = DateTime.Now.AddDays(100).ToString("yyyy/MM/dd"),
+                    CheckOut = DateTime.Now.AddDays(200).ToString("yyyy/MM/dd")
+                },
+                AdditionalNeeds = "Smoking"
+            };
+
+            Int32 bookingId = 13;
+
+            // Act
+
+            Boolean result = apiHelper.UpdateBooking(oUpdatedBooking, bookingId);
+
+            Assert.True(result);
         }
 
         [Test]
@@ -83,6 +106,8 @@ namespace Com.Test.API.Federico
         [Test]
         public void Get_Bookings()
         {
+            // apiHelper.get
+
             //// Arrange
             //var client = new RestClient(_baseUrl);
             //var request = new RestRequest("booking", Method.GET);
