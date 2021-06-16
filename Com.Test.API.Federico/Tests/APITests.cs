@@ -62,9 +62,6 @@ namespace Com.Test.API.Federico
             // Act
             BookingResponse res = apiHelper.Create_Booking(oNewBooking);
             Assert.NotZero(res.BookingId);
-
-            // Assert
-            Assert.Pass();
         }
 
         [Test]

@@ -99,11 +99,6 @@ namespace Com.Test.Federico
         [Test(Description = "Browse to site, add a specific item type to cart, login, confirm adding item to cart, confim shipment details, confirm payment details as check, get order#, validate that order # is displayed on order list.")]
         public void Order_TShirt_And_Validate_Order_Creation()
         {
-
-            System.Threading.Thread.Sleep(55000);
-            Assert.Pass();
-            return;
-
             // navigate to test site
             driver.Navigate().GoToUrl(homeURL);
 
